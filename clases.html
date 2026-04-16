@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulos Técnicos | 12-1 BTPI</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="capa-transparencia"></div>
+
+    <header>
+		<div class="contenedor-logo-head"> </div>
+<header><img src="img/LOGO.png" alt="Logo BTPI" class="logo-btpi-small">
+        <h1 class="titulo-majestuoso">12-1 BTPI</h1>
+        <p class="subtitulo-premium">BACHILLERATO TÉCNICO PROFESIONAL EN INFORMÁTICA</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">INICIO</a></li>
+            <li><a href="clases.html">CLASES</a></li>
+            <li><a href="profesores.html">PROFESORES</a></li>
+            <li><a href="galeria.html">GALERÍA</a></li> 
+			<li><a href="contacto.html">CONTACTO</a></li>
+			
+        </ul>
+    </nav>
+
+    <main class="contenedor-clases">
+        
+        <div class="tarjeta-clase-pro">
+			<h2><center>Diseño Web</center></h2>
+            <p>Es el arte de maquetar soluciones digitales. En el 12-1 dominamos la estructura semántica con <strong>HTML</strong> y la presentación estética con <strong>CSS</strong>. Aprendemos a crear sitios responsivos, transiciones fluidas y una experiencia de usuario (UX) de primer nivel utilizando herramientas como Notepad++ y Dreamweaver.</p>
+        </div>
+
+        <div class="tarjeta-clase-pro">
+            <h2><center>Producciones Digitales</center></h2>
+            <p>El núcleo de la creatividad visual. En este módulo trabajamos con diseño vectorial en <strong>CorelDRAW,</strong>Adobe Illustrator y PhotoShop, además de la edición multimedia. Nos enfocamos en la creación de marcas, logotipos y material audiovisual profesional para proyectos institucionales y comerciales.</p>
+        </div>
+
+        <div class="tarjeta-clase-pro">
+			<h2><center>Programación II</center></h2>
+            <p>Desarrollo de lógica aplicada y resolución de problemas. Estudiamos lenguajes de programación para crear software funcional y la gestión avanzada de <strong>Bases de Datos con SQL Server 2022</strong>, asegurando la integridad y seguridad de la información mediante consultas, llaves primarias y foráneas.</p>
+        </div>
+
+        <div class="tarjeta-clase-pro">
+			<h2><center>Redes Informáticas</center></h2>
+            <p>Conectamos ideas y equipos. Aprendemos la infraestructura física y lógica de las redes, desde el ponchado de cables UTP bajo estándares internacionales hasta la configuración de protocolos <strong>TCP/IP</strong>, subredes y administración de recursos compartidos en entornos locales (LAN).</p>
+        </div>
+
+        <div class="tarjeta-clase-pro">
+			<h2><center>Mantenimiento y Reparación</center></h2>
+            <p>Soporte técnico integral. El 12-1 está capacitado para el diagnóstico preventivo y correctivo de hardware. Realizamos ensamblaje de piezas, limpieza de componentes internos y la optimización de sistemas operativos para garantizar la vida útil de los equipos tecnológicos.</p>
+        </div>
+
+        <div class="tarjeta-clase-pro">
+			<h2><center>Gestión Empresarial</center></h2>
+            <p>La informática como negocio y servicio. Aprendemos a planificar proyectos sociotécnicos, presupuestos de inversión y propuestas de implementación de sistemas (TPS). Es la base de nuestro proyecto <strong>Sistema de Información</strong> y de nuestra visión como futuros emprendedores.</p>
+        </div>
+
+    </main>
+
+   <footer>
+	   <p><h3>Instituto Gubernamental Polivalente Roberto Micheletti Baín</h3></p>
+    </footer>
+	
+		<script>
+    // Efecto de aparición al hacer scroll
+    const observarElementos = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+            }
+        });
+    }, { threshold: 0.1 });
+
+    // Aplicar a todas las tarjetas
+    document.querySelectorAll('.tarjeta-clase-pro, .tarjeta-docente, .tarjeta-cristal').forEach(tarjeta => {
+        tarjeta.style.opacity = "0";
+        tarjeta.style.transform = "translateY(30px)";
+        tarjeta.style.transition = "all 0.6s ease-out";
+        observarElementos.observe(tarjeta);
+    });
+</script>
+		
+		<script src="musica.js"></script>
+</body>
+</html>

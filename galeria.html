@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Elite | 12-1 BTPI</title>
+    <link rel="stylesheet" href="estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="capa-transparencia"></div>
+
+    <header>
+        <div class="contenedor-logo-head">
+            <img src="img/LOGO.png" alt="Logo BTPI" class="logo-btpi-small">
+        </div>
+        <h1 class="titulo-majestuoso">NUESTRO ÁLBUM</h1>
+        <p class="subtitulo-premium">INSTITUTO GUBERNAMENTAL POLIVALENTE ROBERTO MICHELETTI BAÍN</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">INICIO</a></li>
+            <li><a href="clases.html">CLASES</a></li>
+            <li><a href="profesores.html">PROFESORES</a></li>
+            <li><a href="galeria.html">GALERÍA</a></li> 
+		  <li><a href="contacto.html">CONTACTO</a></li>
+        </ul>
+    </nav>
+
+    <main>
+    <section class="caja-cristal">
+        <center>
+          <h1 lass="titulo-majestuoso"><strong>GALERÍA 12-1 BTPI</strong></h1>
+<p><b>Momentos capturados por la generación de Informática 2026.</b></p></center>
+        
+        <div class="contenedor-galeria-pro">
+            <img src="img/btpi.jpg" alt="12-1 BTPI" class="foto-galeria" onclick="abrirModal(this)">
+            <img src="img/ganadora.jpg" alt="12-1 BTPI" class="foto-galeria" onclick="abrirModal(this)">
+            <img src="img/lab 1.jpg" alt="12-1 BTPI" class="foto-galeria" onclick="abrirModal(this)">
+            <img src="img/grupo 1.jpg" alt="12-1 BTPI" class="foto-galeria" onclick="abrirModal(this)">
+            <img src="img/programa.jpg" alt="12-1 BTPI" class="foto-galeria" onclick="abrirModal(this)">
+            <img src="img/familia.jpeg" alt="12-1 BTPI" class="foto-galeria" onclick="abrirModal(this)">
+            <img src="img/uwu.jpg" alt="12-1 BTPI" class="foto-galeria" onclick="abrirModal(this)">
+            <img src="img/papas.jpg" alt="12-1 BTPI" class="foto-galeria" onclick="abrirModal(this)">
+    </section>
+
+    <!-- MODAL PARA VISUALIZAR IMAGEN AMPLIADA -->
+    <div id="modalGaleria" class="modal">
+        <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+        <span class="anterior" onclick="imagenAnterior()">&#10094;</span>
+        <img class="modal-content" id="imagenModal">
+        <span class="siguiente" onclick="imagenSiguiente()">&#10095;</span>
+    </div>
+</main>
+		
+<footer>
+	   <p><h3>Instituto Gubernamental Polivalente Roberto Micheletti Baín</h3></p>
+</footer>}
+	
+		<script>
+    // ===== FUNCIONES DEL MODAL DE GALERÍA =====
+    let indiceImagenActual = 0;
+    let imagenes = [];
+
+    function abrirModal(elemento) {
+        const modal = document.getElementById('modalGaleria');
+        const imagenModal = document.getElementById('imagenModal');
+        imagenes = document.querySelectorAll('.foto-galeria');
+        
+        // Encontrar el índice de la imagen actual
+        imagenes.forEach((img, index) => {
+            if (img === elemento) {
+                indiceImagenActual = index;
+            }
+        });
+        
+        imagenModal.src = elemento.src;
+        modal.classList.add('mostrar');
+    }
+
+    function cerrarModal() {
+        const modal = document.getElementById('modalGaleria');
+        modal.classList.remove('mostrar');
+    }
+
+    function imagenAnterior() {
+        indiceImagenActual--;
+        if (indiceImagenActual < 0) {
+            indiceImagenActual = imagenes.length - 1;
+        }
+        document.getElementById('imagenModal').src = imagenes[indiceImagenActual].src;
+    }
+
+    function imagenSiguiente() {
+        indiceImagenActual++;
+        if (indiceImagenActual >= imagenes.length) {
+            indiceImagenActual = 0;
+        }
+        document.getElementById('imagenModal').src = imagenes[indiceImagenActual].src;
+    }
+
+    // Cerrar modal al hacer clic fuera de la imagen
+    document.addEventListener('click', function(event) {
+        const modal = document.getElementById('modalGaleria');
+        if (event.target === modal) {
+            cerrarModal();
+        }
+    });
+
+    // Navegación con teclado
+    document.addEventListener('keydown', function(event) {
+        const modal = document.getElementById('modalGaleria');
+        if (modal.classList.contains('mostrar')) {
+            if (event.key === 'ArrowLeft') {
+                imagenAnterior();
+            } else if (event.key === 'ArrowRight') {
+                imagenSiguiente();
+            } else if (event.key === 'Escape') {
+                cerrarModal();
+            }
+        }
+    });
+
+    // Efecto de aparición al hacer scroll
+    const observarElementos = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+            }
+        });
+    }, { threshold: 0.1 });
+
+    // Aplicar a todas las tarjetas
+    document.querySelectorAll('.tarjeta-clase-pro, .tarjeta-docente, .tarjeta-cristal').forEach(tarjeta => {
+        tarjeta.style.opacity = "0";
+        tarjeta.style.transform = "translateY(30px)";
+        tarjeta.style.transition = "all 0.6s ease-out";
+        observarElementos.observe(tarjeta);
+    });
+</script>
+		
+		<script src="musica.js"></script>
+</body>
+</html>

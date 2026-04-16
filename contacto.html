@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | 12-1 BTPI</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="capa-transparencia"></div>
+
+    <header>
+        <div class="contenedor-logo-head"> </div>
+        <img src="img/LOGO.png" alt="Logo BTPI" class="logo-btpi-small">
+        <h1 class="titulo-majestuoso">CONTÁCTANOS</h1>
+        <p class="subtitulo-premium">SECCIÓN 12-1 | INFORMÁTICA PROFESIONAL</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">INICIO</a></li>
+            <li><a href="clases.html">CLASES</a></li>
+            <li><a href="profesores.html">PROFESORES</a></li>
+            <li><a href="galeria.html">GALERÍA</a></li> 
+            <li><a href="contacto.html">CONTACTO</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="caja-cristal-contacto">
+            <h2 class="texto-subrayado">¿Tienes un Proyecto o Consulta?</h2>
+            <p>Envía un mensaje directo a los desarrolladores del 12-1 BTPI. Estamos listos para innovar.</p>
+            
+            <form id="formulario-contacto" action="https://formspree.io/f/mpqkwkgp" method="POST" class="formulario-pro">
+                
+                <div class="grupo-input">
+                    <label>Nombre del Remitente:</label>
+                    <input type="text" name="nombre" id="nombre" placeholder="Ej. Dorian Murillo" required>
+                </div>
+
+                <div class="grupo-input">
+                    <label>Correo Electrónico:</label>
+                    <input type="email" name="email" id="email" placeholder="correo@ejemplo.com" required>
+                </div>
+
+                <div class="grupo-input">
+                    <label>Asunto:</label>
+                    <select name="asunto" id="asunto" required>
+                        <option value="" disabled selected>Seleccione un motivo...</option>
+                        <option value="desarrollo_web">Desarrollo de Sitio Web</option>
+                        <option value="mantenimiento_pc">Mantenimiento de Computadoras</option>
+                        <option value="redes">Instalación de Redes LAN</option>
+                        <option value="consulta_btpi">Información Carrera BTPI</option>
+                        <option value="tes_2026">Apoyo Proyecto TES 2026</option>
+                        <option value="practica_profesional">Cupo para Práctica Profesional</option>
+                        <option value="presupuesto">Solicitud de Presupuesto</option>
+                        <option value="otro">Otro Motivo</option>
+                    </select>
+                </div>
+
+                <div class="grupo-input">
+                    <label>Mensaje:</label>
+                    <textarea name="mensaje" id="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                </div>
+
+                <input type="hidden" name="_subject" value="Nuevo contacto desde el Portal 12-1">
+
+                <button type="submit" id="btn-enviar" class="boton-enviar">ENVIAR MENSAJE MAJESTUOSO</button>
+                <p id="mensaje-estado" style="text-align: center; margin-top: 10px; font-weight: bold;"></p>
+            </form>
+        </section>
+    </main>
+    
+    <section class="caja-cristal-contacto">
+        <h2 class="texto-subrayado"><center>Si Desea Información Sobre Nuestra Carrera</center></h2>
+        <div class="contenedor-redes">
+            <a href="https://wa.me/50498231352" target="_blank" class="tarjeta-red whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <span>Lic. Karla Andrade</span>
+            </a>
+            <a href="https://wa.me/50497784757" target="_blank" class="tarjeta-red whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                <span>Lic. Stanly Rodríguez</span>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+	   <p><h3>Instituto Gubernamental Polivalente Roberto Micheletti Baín</h3></p>
+    </footer>
+    
+    <script>
+        // 1. Efecto de aparición al hacer scroll (Tu código original)
+        const observarElementos = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.tarjeta-clase-pro, .tarjeta-docente, .tarjeta-cristal, .caja-cristal-contacto').forEach(tarjeta => {
+            tarjeta.style.opacity = "0";
+            tarjeta.style.transform = "translateY(30px)";
+            tarjeta.style.transition = "all 0.6s ease-out";
+            observarElementos.observe(tarjeta);
+        });
+
+        // 2. LÓGICA PARA ENVIAR Y BORRAR TEXTBOX
+        const $form = document.querySelector('#formulario-contacto');
+        const $estado = document.querySelector('#mensaje-estado');
+
+        $form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Evita que la página se recargue
+            const form = new FormData($form);
+            
+            $estado.innerHTML = "Enviando...";
+            $estado.style.color = "#0038a8";
+
+            const response = await fetch($form.action, {
+                method: $form.method,
+                body: form,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                $form.reset(); // ¡ESTO BORRA TODOS LOS TEXTBOX!
+                $estado.innerHTML = "¡Mensaje enviado con éxito!";
+                $estado.style.color = "#00ff00";
+                alert("Gracias por contactar al 12-1. Tu mensaje ha sido enviado.");
+            } else {
+                $estado.innerHTML = "Hubo un error al enviar.";
+                $estado.style.color = "#ce1126";
+            }
+        });
+    </script>
+    
+    <script src="musica.js"></script>
+</body>
+</html>

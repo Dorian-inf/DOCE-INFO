@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catedráticos | 12-1 BTPI</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="capa-transparencia"></div>
+
+    <header>
+		<div class="contenedor-logo-head"> </div>
+<header><img src="img/LOGO.png" alt="Logo BTPI" class="logo-btpi-small">
+        <h1 class="titulo-majestuoso">NUESTROS GUÍAS</h1>
+        <p class="subtitulo-premium">INSTITUTO GUBERNAMENTAL POLIVALENTE ROBERTO MICHELETTI BAÍN</p>
+    </header>
+
+   <nav>
+        <ul>
+            <li><a href="index.html">INICIO</a></li>
+            <li><a href="clases.html">CLASES</a></li>
+            <li><a href="profesores.html">PROFESORES</a></li>
+            <li><a href="galeria.html">GALERÍA</a></li> 
+			<li><a href="contacto.html">CONTACTO</a></li>
+        </ul>
+    </nav>
+
+    <main class="contenedor-profesores">
+        
+        <div class="tarjeta-docente">
+            <div class="marco-foto">
+                <img src="img/profa.jpeg" alt="Lic. Karla Andrade">
+            </div>
+            <div class="info-profe">
+                <h3>Lic. Karla Andrade</h3>
+                <span class="etiqueta-cargo">Catedrática de Informática</span>
+                <p>Líder fundamental en la formación técnica del 12-1. Encargada de guiar a los estudiantes en el desarrollo de competencias profesionales y éticas para el mundo tecnológico.</p>
+            </div>
+        </div>
+
+        <div class="tarjeta-docente">
+            <div class="marco-foto">
+                <img src="img/profe.jpeg" alt="Lic. Kebin Stanly">
+            </div>
+            <div class="info-profe">
+                <h3>Lic. Kebin Stanly</h3>
+                <span class="etiqueta-cargo">Catedrático de Informática</span>
+                <p>Especialista en el área técnica, impulsando la lógica de programación y la innovación en cada proyecto. Mentor clave en el crecimiento profesional de la sección.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+	   <p><h3>Instituto Gubernamental Polivalente Roberto Micheletti Baín</h3></p>
+    </footer>
+		
+		<script>
+    // Efecto de aparición al hacer scroll
+    const observarElementos = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+            }
+        });
+    }, { threshold: 0.1 });
+
+    // Aplicar a todas las tarjetas
+    document.querySelectorAll('.tarjeta-clase-pro, .tarjeta-docente, .tarjeta-cristal').forEach(tarjeta => {
+        tarjeta.style.opacity = "0";
+        tarjeta.style.transform = "translateY(30px)";
+        tarjeta.style.transition = "all 0.6s ease-out";
+        observarElementos.observe(tarjeta);
+    });
+</script>
+		
+		<script src="musica.js"></script>
+</body>
+</html>
